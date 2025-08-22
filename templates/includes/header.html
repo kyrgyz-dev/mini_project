@@ -1,0 +1,17 @@
+<header>
+    <div class="container">
+        <h1>Мой блог</h1>
+        <nav>
+            <a href="{% url 'index' %}">Главная</a>
+            {% if user.is_authenticated %}
+                <a href="create.html">Создать пост</a>
+                <a href="{% url 'user:logout' %}">Выйти</a>
+                <a href="{% url 'user:profile' %}">Профиль</a>
+            {% else %}
+                <a href="{% url 'user:login' %}">Войти</a>
+                <a href="{% url 'user:register' %}">Регистрация</a>
+            {% endif %}
+
+        </nav>
+    </div>
+</header>

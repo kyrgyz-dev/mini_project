@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Мой блог{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <script
+            src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
+            defer
+    ></script>
+</head>
+<body>
+{% include 'includes/header.html' %}
+
+<main class="container">
+    {% block content %}
+    {% endblock content %}
+</main>
+
+{% include 'includes/footer.html' %}
+</body>
+</html>
