@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Профиль</title>
+        <link rel="stylesheet" href="static/css/styles.css" />
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Мой блог</h1>
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="create.html">Создать пост</a>
+                    <a href="#">Выйти</a>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <div class="post-card form-card profile-card">
+                <h3>Профиль пользователя</h3>
+                <img
+                    src="https://via.placeholder.com/120"
+                    alt="Аватар"
+                    class="avatar"
+                />
+                <form method="post" class="form">
+                    <input
+                        type="hidden"
+                        name="csrfmiddlewaretoken"
+                        value="example-csrf-token"
+                    />
+                    <div class="form-group">
+                        <label for="username">Имя пользователя</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value="user123"
+                            class="form-input"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Электронная почта</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="user@example.com"
+                            class="form-input"
+                            required
+                        />
+                    </div>
+                    <div class="form-group file-input">
+                        <label for="avatar">Аватар</label>
+                        <input
+                            type="file"
+                            id="avatar"
+                            name="avatar"
+                            accept="image/*"
+                            class="form-input"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">О себе</label>
+                        <textarea
+                            id="bio"
+                            name="bio"
+                            rows="4"
+                            class="form-input"
+                        >
+Короткое описание о себе...</textarea
+                        >
+                    </div>
+                    <div class="actions">
+                        <button type="submit">Сохранить</button>
+                        <a href="index.html">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Мой блог. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Контакты</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

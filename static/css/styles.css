@@ -261,6 +261,28 @@ main {
 .form .actions a:hover {
     background-color: #d1d5db;
 }
+.form-card {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.form-card.profile-card {
+    max-width: 600px;
+}
+.form-card.profile-card .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 16px;
+}
+.form-card.profile-card .form-group.file-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.form-card.profile-card .form-group.file-input input {
+    flex: 1;
+}
 .pagination {
     display: flex;
     justify-content: center;
