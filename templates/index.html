@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Мой блог</title>
+        <link rel="stylesheet" href="static/css/styles.css" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
+            defer
+        ></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Мой блог</h1>
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="create.html">Создать пост</a>
+                    <a href="#">Выйти</a>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <div class="search-section">
+                <h2>Все посты</h2>
+                <form action="index.html" method="get" class="search-form">
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="Поиск по заголовку или содержанию"
+                    />
+                    <button type="submit">Найти</button>
+                </form>
+            </div>
+            <div class="category-filter">
+                <h3>Фильтр по категориям</h3>
+                <div class="categories">
+                    <a href="index.html" class="active">Все</a>
+                    <a href="index.html?category=1">Технологии</a>
+                    <a href="index.html?category=2">Лайфстайл</a>
+                    <a href="index.html?category=3">Путешествия</a>
+                </div>
+            </div>
+            <div class="post-grid">
+                <div class="post-card">
+                    <h3>Первый пост</h3>
+                    <p>Это пример поста о новых технологиях...</p>
+                    <p class="meta">Категория: Технологии</p>
+                    <p class="meta">Опубликовано: 21.08.2025</p>
+                    <div class="actions">
+                        <a href="detail.html">Подробнее</a>
+                        <a href="edit.html" class="edit">Редактировать</a>
+                        <a
+                            href="#"
+                            @click="open = true; document.getElementById('delete-form').action = '/delete/1';"
+                            class="delete"
+                            >Удалить</a
+                        >
+                    </div>
+                </div>
+                <div class="post-card">
+                    <h3>Второй пост</h3>
+                    <p>Рассказ о путешествии по Европе...</p>
+                    <p class="meta">Категория: Путешествия</p>
+                    <p class="meta">Опубликовано: 20.08.2025</p>
+                    <div class="actions">
+                        <a href="detail.html">Подробнее</a>
+                        <a href="edit.html" class="edit">Редактировать</a>
+                        <a
+                            href="#"
+                            @click="open = true; document.getElementById('delete-form').action = '/delete/2';"
+                            class="delete"
+                            >Удалить</a
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                <a href="index.html?page=1">Назад</a>
+                <span>Страница 1 из 3</span>
+                <a href="index.html?page=2">Вперед</a>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Мой блог. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Контакты</a>
+                </div>
+            </div>
+        </footer>
+        <div
+            id="delete-modal"
+            x-data="{ open: false }"
+            class="modal"
+            :class="{ 'show': open }"
+        >
+            <div class="modal-content">
+                <h3>Подтверждение удаления</h3>
+                <p>Вы уверены, что хотите удалить этот пост?</p>
+                <div class="actions">
+                    <button @click="open = false" class="cancel">Отмена</button>
+                    <form id="delete-form" method="post" class="inline">
+                        <input
+                            type="hidden"
+                            name="csrfmiddlewaretoken"
+                            value="example-csrf-token"
+                        />
+                        <button type="submit" class="delete">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
