@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+    <div class="post-card detail">
+        <h3>{{ post.title }}</h3>
+        <p>
+            {{ post.content }}
+        </p>
+        <p class="meta">Категория: {{ post.category.name }}</p>
+        <p class="meta">Опубликовано: {{ post.created_at|date:"d.m.Y H:i" }}</p>
+        <div class="actions">
+            <a href="{% url 'index' %}">Назад к списку</a>
+            {% if user == post.author %}
+            <a href="{% url 'post:edit-post' post.id %}" class="edit">Редактировать</a>
+            <a href="{% url 'post:delete-post' post.id %}"
+                    @click="open = true; document.getElementById('delete-form').action = '{% url 'post:delete-post' post.id %}';"
+                    class="delete">Удалить</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
+

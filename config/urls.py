@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 def index(request):
     return render(request, 'index.html')
 
@@ -13,6 +14,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('accounts/', include('user.urls', namespace='user')),
+    path('posts/', include('post.urls', namespace='post')),
 ]
 
 if settings.DEBUG:

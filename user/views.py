@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from user.forms import RegistrationForm, LoginForm, ProfileForm
 
@@ -44,12 +45,14 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
+@login_required
 def logout_view(request):
     logout(request)
     messages.success(request, 'Вы успешно вышли из системы')
     return redirect('user:login')
 
 
+@login_required
 def profile_view(request):
     user = get_object_or_404(User, id=request.user.id)
     if request.method == 'POST':

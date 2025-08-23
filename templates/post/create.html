@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Вход{% endblock title %}
+
+{% block title %}Создать пост{% endblock title %}
+
 {% block content %}
     <div class="post-card form-card">
-        <h3>Вход в аккаунт</h3>
+        <h3>Создать новый пост</h3>
         {% if form.errors %}
             <div style="color: #ef4444; margin-bottom: 16px">
                 {% for field in form %}
@@ -22,20 +24,24 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <form method="post" action="{% url 'user:login' %}" class="form">
+        <form method="post" action="{% url 'post:create-post' %}" class="form">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.username.label_tag }}
-                {{ form.username }}
+                {{ form.title.label_tag }}
+                {{ form.title }}
             </div>
             <div class="form-group">
-                {{ form.password.label_tag }}
-                {{ form.password }}
+                {{ form.content.label_tag }}
+                {{ form.content }}
+            </div>
+            <div class="form-group">
+                {{ form.category.label_tag }}
+                {{ form.category }}
             </div>
             <div class="actions">
-                <button type="submit">Войти</button>
-                <a href="{% url 'user:register' %}">Нет аккаунта? Зарегистрируйтесь</a>
+                <button type="submit">Создать</button>
             </div>
         </form>
     </div>
 {% endblock content %}
+
